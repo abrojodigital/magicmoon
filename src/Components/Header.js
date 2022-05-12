@@ -4,7 +4,6 @@ import Carousel from 'react-bootstrap/Carousel'
 function Header() {
   return (
     <>
-
       <nav className="navbar navbar-dark bg-dark">
         <a className="navbar-brand" href="https://abrojodigital.com">
           <img
