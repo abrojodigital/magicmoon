@@ -23,6 +23,7 @@ function Homepage() {
   const [mostrarSigno, setMostrarSigno] = useState(false);
   const [mostrarTarot, setMostrarTarot] = useState(false);
   const [mostrarDownload, setMostrarDownload] = useState(false);
+  const [mostrarBotonZodiaco, setMostrarBotonZodiaco] = useState(false);
 
   const exportarArchivo = (e) => {
     e.preventDefault();
@@ -54,6 +55,7 @@ function Homepage() {
     let mes = parseInt(e.target.value.split("-")[1]);
     let dia = parseInt(e.target.value.split("-")[2]);
     setSigno(buscarSigno(mes, dia));
+    setMostrarBotonZodiaco(true);
   };
   // const getEmail = (e) => {
   //   setEmail(e.target.value);
@@ -76,68 +78,78 @@ function Homepage() {
     <Container className="p-3 bg-body">
       <Header />
       <Container id="lectura">
-      <Container className="p-5 mb-4 rounded-3">
-        <Form>
-          <Form.Group controlId="formBasicName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your name"
+        <Container className="p-5 mb-4 rounded-3">
+          <Form>
+            <Form.Group controlId="formBasicName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your name"
               // onChange={getNombre}
-            />
-          </Form.Group>
+              />
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              // onChange={getEmail}
-              placeholder="Enter email"
-            />
-            <Form.Text className="text-muted">
-              We will never share your email
-            </Form.Text>
-          </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                // onChange={getEmail}
+                placeholder="Enter email"
+              />
+              <Form.Text className="text-muted">
+                We will never share your email
+              </Form.Text>
+            </Form.Group>
 
-          <Form.Group controlId="formBasicGenero">
-            <Form.Label>Gender</Form.Label>
-            <Form.Control as="select" > 
-              <option value="">Select your gender</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-              <option value="M">Non binary</option>
-            </Form.Control>
-          </Form.Group>
+            <Form.Group controlId="formBasicGenero">
+              <Form.Label>Gender</Form.Label>
+              <Form.Control as="select" >
+                <option value="">Select your gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="M">Non binary</option>
+              </Form.Control>
+            </Form.Group>
 
-          <Form.Group controlId="formBasicFechaNacimiento">
-            <Form.Label>Date of birth</Form.Label>
-            <Form.Control type="date" onChange={getFechaNacimiento} />
-          </Form.Group>
-        </Form>
+            <Form.Group controlId="formBasicFechaNacimiento">
+              <Form.Label>Date of birth</Form.Label>
+              <Form.Control type="date" onChange={getFechaNacimiento} />
+            </Form.Group>
+          </Form>
 
+          {mostrarBotonZodiaco &&
+            (<div className="mt-5 text-center">
+              <h5>Let magic happen!!!</h5>
+              <img src="./assets/img/horoscopo.png" width="100" alt="Let magic!" onClick={calcularHoroscopo} />
+              <p>Calculate</p>
+            </div>
+            )}
+          {!mostrarBotonZodiaco &&
+            (<div className="mt-5 text-center">
+              <h5>Let magic happen!!!</h5>
+              <img src="./assets/img/horoscopo2.png" width="100" alt="Let magic!" />
+              <p>Date of birth is needed to calculate</p>
+            </div>
+            )}
+
+        </Container>
+
+        {mostrarSigno && (
+          <Container className="p-5 mb-4 bg-light rounded-3">
+            <DetalleSigno signo={signo} />
+            <Horoscopo signo={signo} />
+          </Container>
+        )}
         <div className="text-center">
-          <h5>Let magic happen!!!</h5>
-          <img src="./assets/img/horoscopo.png" width="100" alt="Let magic!" onClick={calcularHoroscopo} />
+          <h5>Tarot reading</h5>
+          <img src="./assets/img/tarot.png" alt="tarot" onClick={tirarCartasTarot} className="img-fluid" />
         </div>
 
-      </Container>
-
-      {mostrarSigno && (
-        <Container className="p-5 mb-4 bg-light rounded-3">
-          <DetalleSigno signo={signo} />
-          <Horoscopo signo={signo} />
-        </Container>
-      )}
-      <div className="text-center">
-        <h5>Tarot reading</h5>
-        <img src="./assets/img/tarot.png" alt="tarot" onClick={tirarCartasTarot} className="img-fluid" />
-      </div>
-
-      {mostrarTarot && (
-        <Container className="p-5 mb-4 bg-light rounded-3">
-          <Tarot tirarCartasTarot={tirarCartasTarot} ocultarTarot={ocultarTarot} />
-        </Container>
-      )}
+        {mostrarTarot && (
+          <Container className="p-5 mb-4 bg-light rounded-3">
+            <Tarot tirarCartasTarot={tirarCartasTarot} ocultarTarot={ocultarTarot} />
+          </Container>
+        )}
       </Container>
       {mostrarDownload && (
         <Container className="text-center">
