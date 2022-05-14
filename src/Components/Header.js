@@ -50,7 +50,6 @@ function Header() {
             <p>Would you like to know yourself in depth and understand your past, present and future?</p>
           </Carousel.Caption>
         </Carousel.Item>
-
       </Carousel>
     </>
   );

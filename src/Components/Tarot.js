@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import tarot from '../Data/tarot.json';
 
-function Tarot(props) {
+function Tarot() {
   const [prediccionPasado, setPrediccionPasado] = useState({});
   const [prediccionPresente, setPrediccionPresente] = useState({});
   const [prediccionFuturo, setPrediccionFuturo] = useState({});
@@ -19,7 +19,6 @@ function Tarot(props) {
     sortearPrediccion();
   }
     , [])
-
 
   return (
     <div className='container'>
@@ -70,6 +69,5 @@ function Tarot(props) {
       </div>
   );
 }
-
 
 export default Tarot;
