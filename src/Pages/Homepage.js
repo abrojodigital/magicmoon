@@ -172,7 +172,7 @@ function Homepage() {
         )}
       </Container>
       {mostrarDownload && (
-        <Container className="text-center">
+        <Container className="bg-body text-center">
           <h3>Download</h3>
           <img src="./assets/img/logo.png" alt="tarot" width="100" onClick={exportarArchivo} className="img-fluid" />
         </Container>)}
