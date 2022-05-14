@@ -22,7 +22,7 @@ function Tarot() {
 
   return (
     <div className='container'>
-      <div className='row'>
+      <div className='row border-bottom'>
         <div className='col'>
           <h2 className='text-center'>Past</h2>
           <img src={prediccionPasado.image} alt='tarot' className='img-fluid' />
@@ -45,21 +45,21 @@ function Tarot() {
           <p>Reversed: {prediccionFuturo.reversed}</p>
         </div>
       </div>
-      <div className='row'>
+      <div className='row border-bottom mt-3'>
         <h3>Past</h3>
         <h5>Summary</h5>
         <p>{prediccionPasado.summary}</p>
         <h5>Meaning</h5>
         <p>{prediccionPasado.full_meaning}</p>
       </div>
-      <div className='row'>
+      <div className='row border-bottom mt-3'>
         <h3>Present</h3>
         <h5>Summary</h5>
         <p>{prediccionPresente.summary}</p>
         <h5>Meaning</h5>
         <p>{prediccionPresente.full_meaning}</p>
       </div>
-      <div className='row'>
+      <div className='row mt-3'>
         <h3>Future</h3>
         <h5>Summary</h5>
         <p>{prediccionFuturo.summary}</p>
