@@ -24,6 +24,7 @@ function Homepage() {
   const [mostrarTarot, setMostrarTarot] = useState(false);
   const [mostrarDownload, setMostrarDownload] = useState(false);
   const [mostrarBotonZodiaco, setMostrarBotonZodiaco] = useState(false);
+  const [mostrarBotonTarot, setMostrarBotonTarot] = useState(false);
 
   const exportarArchivo = (e) => {
     e.preventDefault();
@@ -63,6 +64,7 @@ function Homepage() {
   const calcularHoroscopo = (e) => {
     e.preventDefault();
     setMostrarSigno(true);
+    setMostrarBotonTarot(true);
   };
 
   const tirarCartasTarot = (e) => {
@@ -75,46 +77,61 @@ function Homepage() {
   }
 
   return (
-    <Container className="p-3 bg-body">
+    <div className="App">
+    <Container>
       <Header />
-      <Container id="lectura">
+      <Container className="bg-body" id="lectura">
+      <h1 className="text-center">Astrology and Tarot</h1>
+      <p className="text-center">
+        Do you know what characteristics your personality has? Do you know what's in store for your future? The moon will give you a guide for your life
+      </p>
         <Container className="p-5 mb-4 rounded-3">
           <Form>
-            <Form.Group controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your name"
-              // onChange={getNombre}
-              />
-            </Form.Group>
+            <div className="row">
+              <div className="col-md-6">
+                <Form.Group controlId="formBasicName">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your name"
+                  // onChange={getNombre}
+                  />
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                // onChange={getEmail}
-                placeholder="Enter email"
-              />
-              <Form.Text className="text-muted">
-                We will never share your email
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicGenero">
-              <Form.Label>Gender</Form.Label>
-              <Form.Control as="select" >
-                <option value="">Select your gender</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-                <option value="M">Non binary</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="formBasicFechaNacimiento">
-              <Form.Label>Date of birth</Form.Label>
-              <Form.Control type="date" onChange={getFechaNacimiento} />
-            </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    // onChange={getEmail}
+                    placeholder="Enter email"
+                  />
+                  <Form.Text className="text-muted">
+                    We will never share your email
+                  </Form.Text>
+                </Form.Group>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                <Form.Group controlId="formBasicGenero">
+                  <Form.Label>Gender</Form.Label>
+                  <Form.Control as="select" >
+                    <option value="">Select your gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="M">Non binary</option>
+                  </Form.Control>
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group controlId="formBasicFechaNacimiento">
+                  <Form.Label>Date of birth</Form.Label>
+                  <Form.Control type="date" onChange={getFechaNacimiento} />
+                </Form.Group>
+              </div>
+            </div>
           </Form>
 
           {mostrarBotonZodiaco &&
@@ -140,10 +157,11 @@ function Homepage() {
             <Horoscopo signo={signo} />
           </Container>
         )}
-        <div className="text-center">
+        
+       {mostrarBotonTarot && ( <div className="text-center">
           <h5>Tarot reading</h5>
           <img src="./assets/img/tarot.png" alt="tarot" onClick={tirarCartasTarot} className="img-fluid" />
-        </div>
+        </div>)}
 
         {mostrarTarot && (
           <Container className="p-5 mb-4 bg-light rounded-3">
@@ -157,6 +175,7 @@ function Homepage() {
           <img src="./assets/img/logo.png" alt="tarot" width="100" onClick={exportarArchivo} className="img-fluid" />
         </Container>)}
     </Container>
+    </div>
   );
 }
 

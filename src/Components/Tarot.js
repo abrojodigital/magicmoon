@@ -24,21 +24,21 @@ function Tarot(props) {
   return (
     <div className='container'>
       <div className='row'>
-        <div className='col-4'>
+        <div className='col'>
           <h2 className='text-center'>Past</h2>
           <img src={prediccionPasado.image} alt='tarot' className='img-fluid' />
           <h5>{prediccionPasado.name}</h5>
           <p>Upright: {prediccionPasado.upright}</p>
           <p>Reversed: {prediccionPasado.reversed}</p>
         </div>
-        <div className='col-4'>
+        <div className='col'>
           <h2 className='text-center'>Present</h2>
           <img src={prediccionPresente.image} alt='tarot' className='img-fluid' />
           <h5 >{prediccionPresente.name}</h5>
           <p>Upright: {prediccionPresente.upright}</p>
           <p>Reversed: {prediccionPresente.reversed}</p>
         </div>
-        <div className='col-4'>
+        <div className='col'>
           <h2 className='text-center'>Future</h2>
           <img src={prediccionFuturo.image} alt='tarot' className='img-fluid' />
           <h5>{prediccionPresente.name}</h5>

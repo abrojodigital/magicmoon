@@ -23,18 +23,26 @@ function Horoscopo(props) {
 
     return (
         <div className="container">
-            <div className="row">
-                    <p className="card-text">
-                        This week. {prediccion.description}
-                        Compatibility: {prediccion.compatibility} <br />
-                        Lucky Number: {prediccion.lucky_number} <br />
-                        Lucky Time: {prediccion.lucky_time} <br />
-                        Color: {prediccion.color} <br />
-                        Date Range: {prediccion.date_range} <br />
-                        Mood: {prediccion.mood} <br />
-                    </p>
-                </div>
+            <div className="row text-center m-2">
+                <p className="card-text">
+                    Today {prediccion.date_range}.<br />
+                    Mood: {prediccion.mood} <br />
+                </p>
             </div>
+            <div className="row text-center m-2">
+                <p className="card-text">
+                    {prediccion.description}
+                </p>
+            </div>
+            <div className="row text-center m-3">
+                <p className="card-text">
+                    Compatibility: {prediccion.compatibility} <br />
+                    Lucky Number: {prediccion.lucky_number} <br />
+                    Lucky Time: {prediccion.lucky_time} <br />
+                    Color: {prediccion.color} <br />
+                </p>
+            </div>
+        </div>
     )
 }
 
