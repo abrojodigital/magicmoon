@@ -46,7 +46,6 @@ function Homepage() {
     });
   }
 
-
   const getFechaNacimiento = (e) => {
     let mes = parseInt(e.target.value.split("-")[1]);
     let dia = parseInt(e.target.value.split("-")[2]);
